@@ -1,0 +1,1087 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyclf.lda &#8212; pyclf 0.0.6 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=1fd71caa"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyclf/lda';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://simonkojima.github.io/rosoku-docs/versions.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = '0.0.6';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo-light.png" class="logo__image only-light" alt="pyclf 0.0.6 documentation - Home"/>
+    <img src="../../_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="pyclf 0.0.6 documentation - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pyclf.lda</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pyclf.lda</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">TransformerMixin</span><span class="p">,</span> <span class="n">ClassifierMixin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.utils.validation</span><span class="w"> </span><span class="kn">import</span> <span class="n">check_is_fitted</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.covariance</span><span class="w"> </span><span class="kn">import</span> <span class="n">LedoitWolf</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.special</span><span class="w"> </span><span class="kn">import</span> <span class="n">expit</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">pinv</span><span class="p">,</span> <span class="n">norm</span>
+
+<div class="viewcode-block" id="subtract_classwise_mean">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.subtract_classwise_mean">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">subtract_classwise_mean</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">Xc</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">cl</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="n">y</span> <span class="o">==</span> <span class="n">cl</span>
+        <span class="n">Xc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">-=</span> <span class="n">Xc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Xc</span></div>
+
+
+
+<div class="viewcode-block" id="ShrinkageLDA">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.ShrinkageLDA">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ShrinkageLDA</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Binary Linear Discriminant Analysis (LDA) with shrinkage covariance estimation.</span>
+
+<span class="sd">    This classifier implements a two-class LDA model with a shared covariance matrix</span>
+<span class="sd">    estimated using shrinkage regularization. The shrinkage parameter can either be</span>
+<span class="sd">    specified manually or estimated automatically using the Ledoit–Wolf method.</span>
+
+<span class="sd">    The model assumes class-conditional Gaussian distributions with class-specific</span>
+<span class="sd">    means and a common covariance matrix. The decision function is linear in the</span>
+<span class="sd">    feature space, and class probabilities are obtained via a logistic transform of</span>
+<span class="sd">    the decision scores.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    gamma : float or {&#39;lwf&#39;}, default=&#39;lwf&#39;</span>
+<span class="sd">        Shrinkage coefficient for the pooled covariance matrix.</span>
+
+<span class="sd">        - If a float in [0, 1], the covariance is shrunk toward an isotropic</span>
+<span class="sd">          target matrix according to:</span>
+<span class="sd">          ``Cw = (1 - gamma) * Sigma + gamma * T``,</span>
+<span class="sd">          where ``Sigma`` is the pooled within-class covariance and</span>
+<span class="sd">          ``T = nu * I`` is the scaled identity matrix.</span>
+<span class="sd">        - If &#39;lwf&#39;, the shrinkage coefficient is estimated automatically using</span>
+<span class="sd">          the Ledoit–Wolf method.</span>
+
+<span class="sd">    priors : {&#39;equal&#39;, &#39;empirical&#39;}, default=&#39;equal&#39;</span>
+<span class="sd">        Class prior probabilities.</span>
+
+<span class="sd">        - &#39;equal&#39;: both classes are assigned prior probability 0.5.</span>
+<span class="sd">        - &#39;empirical&#39;: priors are estimated from the class frequencies in `y`.</span>
+
+<span class="sd">    scaling : float or None, default=2</span>
+<span class="sd">        Optional scaling factor applied to the projection vector `w` so that the</span>
+<span class="sd">        projected class means are separated by a specified distance. If None,</span>
+<span class="sd">        no additional scaling is applied.</span>
+
+<span class="sd">    inverse : {&#39;inv&#39;, &#39;pinv&#39;}, default=&#39;inv&#39;</span>
+<span class="sd">        Method used to invert the covariance matrix.</span>
+
+<span class="sd">        - &#39;inv&#39;: use ``numpy.linalg.inv``.</span>
+<span class="sd">        - &#39;pinv&#39;: use ``numpy.linalg.pinv`` (more stable for ill-conditioned</span>
+<span class="sd">          covariance matrices).</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    classes_ : ndarray of shape (2,)</span>
+<span class="sd">        Unique class labels seen during fitting, sorted in ascending order.</span>
+
+<span class="sd">    priors_ : list of float</span>
+<span class="sd">        Prior probabilities for the two classes, in the same order as `classes_`.</span>
+
+<span class="sd">    gamma_ : float</span>
+<span class="sd">        Effective shrinkage coefficient used during fitting. Equals `gamma` if a</span>
+<span class="sd">        float is provided, or the value estimated by Ledoit–Wolf when</span>
+<span class="sd">        ``gamma=&#39;lwf&#39;``.</span>
+
+<span class="sd">    w_ : ndarray of shape (n_features,)</span>
+<span class="sd">        Linear projection vector defining the discriminant direction.</span>
+
+<span class="sd">    b_ : float</span>
+<span class="sd">        Bias term of the linear decision function.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    The pooled within-class covariance matrix is estimated after subtracting the</span>
+<span class="sd">    class-wise mean from each sample:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \\Sigma = \\frac{1}{N - K} \\sum_{c=1}^{K} \\sum_{i \\in c}</span>
+<span class="sd">        (x_i - \\mu_c)(x_i - \\mu_c)^\\top,</span>
+
+<span class="sd">    where :math:`N` is the number of samples and :math:`K=2` is the number of</span>
+<span class="sd">    classes.</span>
+
+<span class="sd">    Shrinkage is then applied toward an isotropic target matrix:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        C_w = (1 - \\gamma)\\,\\Sigma + \\gamma\\,\\nu I,</span>
+
+<span class="sd">    with :math:`\\nu = \\mathrm{trace}(\\Sigma) / d` and :math:`d` the number of</span>
+<span class="sd">    features.</span>
+
+<span class="sd">    The decision function is given by:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        f(x) = w^\\top x + b,</span>
+
+<span class="sd">    where :math:`w = C_w^{-1}(\\mu_1 - \\mu_0)`.</span>
+
+<span class="sd">    Probabilities are obtained by applying the logistic sigmoid to the decision</span>
+<span class="sd">    scores.</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+<span class="sd">    RuntimeError</span>
+<span class="sd">        If the number of unique classes in `y` is not equal to 2, or if the</span>
+<span class="sd">        shrinkage parameter is outside the interval [0, 1].</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    Ledoit, O., &amp; Wolf, M. (2004). A well-conditioned estimator for large-</span>
+<span class="sd">    dimensional covariance matrices. Journal of Multivariate Analysis.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">gamma</span><span class="o">=</span><span class="s2">&quot;lwf&quot;</span><span class="p">,</span>
+            <span class="n">priors</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">,</span>
+            <span class="n">scaling</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">inverse</span><span class="o">=</span><span class="s2">&quot;inv&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="n">gamma</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priors</span> <span class="o">=</span> <span class="n">priors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaling</span> <span class="o">=</span> <span class="n">scaling</span>
+
+        <span class="k">if</span> <span class="n">inverse</span> <span class="o">==</span> <span class="s2">&quot;inv&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inverse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span>
+        <span class="k">elif</span> <span class="n">inverse</span> <span class="o">==</span> <span class="s2">&quot;pinv&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inverse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">pinv</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;inverse should be either &#39;inv&#39; or &#39;pinv&#39;.&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ShrinkageLDA.fit">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.ShrinkageLDA.fit">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;Number of classes should be 2.&quot;</span><span class="p">)</span>
+
+        <span class="n">cl</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">cl_num</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">:</span>
+            <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">cl_num</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">cl</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">I</span><span class="p">,</span> <span class="p">:])</span>
+
+        <span class="n">mean</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">cl_data</span> <span class="ow">in</span> <span class="n">cl</span><span class="p">:</span>
+            <span class="n">mean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cl_data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">priors</span> <span class="o">==</span> <span class="s2">&quot;empirical&quot;</span><span class="p">:</span>
+            <span class="n">n0</span> <span class="o">=</span> <span class="n">cl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">n1</span> <span class="o">=</span> <span class="n">cl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">pi0</span> <span class="o">=</span> <span class="n">n0</span> <span class="o">/</span> <span class="p">(</span><span class="n">n0</span> <span class="o">+</span> <span class="n">n1</span><span class="p">)</span>
+            <span class="n">pi1</span> <span class="o">=</span> <span class="n">n1</span> <span class="o">/</span> <span class="p">(</span><span class="n">n0</span> <span class="o">+</span> <span class="n">n1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">priors</span> <span class="o">==</span> <span class="s2">&quot;equal&quot;</span><span class="p">:</span>
+            <span class="n">pi0</span> <span class="o">=</span> <span class="n">pi1</span> <span class="o">=</span> <span class="mf">0.5</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;priors should be either &#39;empirical&#39; or &#39;equal&#39;.&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">priors_</span> <span class="o">=</span> <span class="p">[</span><span class="n">pi0</span><span class="p">,</span> <span class="n">pi1</span><span class="p">]</span>
+
+        <span class="n">Xw</span> <span class="o">=</span> <span class="n">subtract_classwise_mean</span><span class="p">(</span><span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">==</span> <span class="s2">&quot;lwf&quot;</span><span class="p">:</span>
+            <span class="n">lw</span> <span class="o">=</span> <span class="n">LedoitWolf</span><span class="p">(</span><span class="n">assume_centered</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xw</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gamma_</span> <span class="o">=</span> <span class="n">lw</span><span class="o">.</span><span class="n">shrinkage_</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">gamma_</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma_</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma_</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;shrinkage parameter should be in [0, 1].&quot;</span><span class="p">)</span>
+
+        <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">Xw</span><span class="o">.</span><span class="n">shape</span>
+
+        <span class="n">Sigma</span> <span class="o">=</span> <span class="p">(</span><span class="n">Xw</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">Xw</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_samples</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">nu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">Sigma</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_features</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="n">nu</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_features</span><span class="p">)</span>
+
+        <span class="n">Cw</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma_</span><span class="p">)</span> <span class="o">*</span> <span class="n">Sigma</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">gamma_</span> <span class="o">*</span> <span class="n">T</span>
+        <span class="n">Cw_inv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inverse</span><span class="p">(</span><span class="n">Cw</span><span class="p">)</span>
+
+        <span class="n">w</span> <span class="o">=</span> <span class="n">Cw_inv</span> <span class="o">@</span> <span class="p">(</span><span class="n">mean</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">mean</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaling</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">scaling_factor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scaling</span> <span class="o">/</span> <span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">mean</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">w</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">mean</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">absolute</span><span class="p">(</span><span class="n">scaling_factor</span><span class="p">))</span>
+
+        <span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">w</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">mean</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">mean</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">priors_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">priors_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">w_</span> <span class="o">=</span> <span class="n">w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b_</span> <span class="o">=</span> <span class="n">b</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="ShrinkageLDA.decision_function">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.ShrinkageLDA.decision_function">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decision_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;classes_&quot;</span><span class="p">,</span> <span class="s2">&quot;gamma_&quot;</span><span class="p">,</span> <span class="s2">&quot;w_&quot;</span><span class="p">,</span> <span class="s2">&quot;b_&quot;</span><span class="p">,</span> <span class="s2">&quot;priors_&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">X</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_</span></div>
+
+
+<div class="viewcode-block" id="ShrinkageLDA.predict_proba">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.ShrinkageLDA.predict_proba">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="n">expit</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="n">p0</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">p1</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">([</span><span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="ShrinkageLDA.predict">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.ShrinkageLDA.predict">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">d</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">preds</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="ShrinkageLDA_OVA">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.ShrinkageLDA_OVA">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ShrinkageLDA_OVA</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    One-vs-All (OvA) extension of Shrinkage Linear Discriminant Analysis (LDA).</span>
+
+<span class="sd">    This classifier decomposes a multi-class classification problem into a set of</span>
+<span class="sd">    binary ShrinkageLDA models, each trained to discriminate one class against</span>
+<span class="sd">    all remaining classes. During prediction, decision scores from all binary</span>
+<span class="sd">    models are combined, and the class with the highest score is selected.</span>
+
+<span class="sd">    Probabilities are obtained by collecting the positive-class probabilities</span>
+<span class="sd">    from each binary classifier and normalizing them so that they sum to one</span>
+<span class="sd">    across classes. These values should be interpreted as heuristic normalized</span>
+<span class="sd">    OvA scores rather than strictly calibrated multi-class posterior</span>
+<span class="sd">    probabilities.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    gamma : float or {&#39;lwf&#39;}, default=&#39;lwf&#39;</span>
+<span class="sd">        Shrinkage coefficient passed to each underlying :class:`ShrinkageLDA`</span>
+<span class="sd">        model. If &#39;lwf&#39;, the Ledoit–Wolf method is used to estimate the optimal</span>
+<span class="sd">        shrinkage parameter for each binary problem.</span>
+
+<span class="sd">    priors : {&#39;equal&#39;, &#39;empirical&#39;}, default=&#39;equal&#39;</span>
+<span class="sd">        Class prior strategy used in each binary classifier.</span>
+
+<span class="sd">        - &#39;equal&#39;: equal priors for the positive and negative class.</span>
+<span class="sd">        - &#39;empirical&#39;: priors estimated from class frequencies in the binary</span>
+<span class="sd">          labels.</span>
+
+<span class="sd">    scaling : float or None, default=2</span>
+<span class="sd">        Optional scaling factor applied to the projection vector in each binary</span>
+<span class="sd">        ShrinkageLDA model so that projected class means are separated by a</span>
+<span class="sd">        specified distance. If None, no additional scaling is applied.</span>
+
+<span class="sd">    inverse : {&#39;inv&#39;, &#39;pinv&#39;}, default=&#39;inv&#39;</span>
+<span class="sd">        Method used to invert the covariance matrix in each binary model.</span>
+
+<span class="sd">        - &#39;inv&#39;: use ``numpy.linalg.inv``.</span>
+<span class="sd">        - &#39;pinv&#39;: use ``numpy.linalg.pinv`` (more stable for ill-conditioned</span>
+<span class="sd">          covariance matrices).</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    classes_ : ndarray of shape (n_classes,)</span>
+<span class="sd">        Sorted unique class labels seen during fitting.</span>
+
+<span class="sd">    model_dict_ : dict</span>
+<span class="sd">        Dictionary mapping each class label to its corresponding fitted</span>
+<span class="sd">        :class:`ShrinkageLDA` binary classifier trained in a one-vs-all fashion.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    For each class :math:`c`, a binary classifier is trained using labels</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        y_{bin} = \\mathbb{1}(y = c),</span>
+
+<span class="sd">    where the positive class corresponds to samples of class :math:`c` and the</span>
+<span class="sd">    negative class corresponds to all other samples.</span>
+
+<span class="sd">    The decision function returns a matrix of shape ``(n_samples, n_classes)``,</span>
+<span class="sd">    where each column contains the decision scores of the corresponding binary</span>
+<span class="sd">    classifier.</span>
+
+<span class="sd">    The predicted class is obtained as:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \\hat{y} = \\arg\\max_c f_c(x),</span>
+
+<span class="sd">    where :math:`f_c(x)` is the decision score of the classifier for class</span>
+<span class="sd">    :math:`c`.</span>
+
+<span class="sd">    The probability estimates are computed by extracting the positive-class</span>
+<span class="sd">    probabilities from each binary classifier and normalizing them:</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \\tilde{p}_c(x) = \\frac{p_c(x)}{\\sum_k p_k(x) + \\epsilon},</span>
+
+<span class="sd">    where :math:`p_c(x)` is the OvA probability for class :math:`c` and</span>
+<span class="sd">    :math:`\\epsilon` is a small constant for numerical stability.</span>
+
+<span class="sd">    These normalized values provide relative confidence across classes but are</span>
+<span class="sd">    not guaranteed to be perfectly calibrated multi-class posterior probabilities.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">gamma</span><span class="o">=</span><span class="s2">&quot;lwf&quot;</span><span class="p">,</span>
+            <span class="n">priors</span><span class="o">=</span><span class="s2">&quot;equal&quot;</span><span class="p">,</span>
+            <span class="n">scaling</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">inverse</span><span class="o">=</span><span class="s2">&quot;inv&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="n">gamma</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priors</span> <span class="o">=</span> <span class="n">priors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scaling</span> <span class="o">=</span> <span class="n">scaling</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inverse</span> <span class="o">=</span> <span class="n">inverse</span>
+
+<div class="viewcode-block" id="ShrinkageLDA_OVA.fit">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.ShrinkageLDA_OVA.fit">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">:</span>
+            <span class="n">y_bin</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">==</span> <span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="n">ShrinkageLDA</span><span class="p">(</span>
+                <span class="n">gamma</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">gamma</span><span class="p">,</span>
+                <span class="n">priors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">priors</span><span class="p">,</span>
+                <span class="n">scaling</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">scaling</span><span class="p">,</span>
+                <span class="n">inverse</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inverse</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_bin</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="ShrinkageLDA_OVA.decision_function">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.ShrinkageLDA_OVA.decision_function">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decision_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;classes_&quot;</span><span class="p">,</span> <span class="s2">&quot;model_dict_&quot;</span><span class="p">])</span>
+        <span class="n">output_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">output_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">output_list</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="k">return</span> <span class="n">output</span></div>
+
+
+<div class="viewcode-block" id="ShrinkageLDA_OVA.predict">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.ShrinkageLDA_OVA.predict">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">I</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">preds</span></div>
+
+
+<div class="viewcode-block" id="ShrinkageLDA_OVA.predict_proba">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.ShrinkageLDA_OVA.predict_proba">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">p_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">:</span>
+            <span class="n">proba</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">classes_</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">p_c</span> <span class="o">=</span> <span class="n">proba</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span>
+            <span class="n">p_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p_c</span><span class="p">)</span>
+
+        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">(</span><span class="n">p_list</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">p</span> <span class="o">/</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e-12</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">p</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="openvibe_pseudo_inv">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.openvibe_pseudo_inv">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">openvibe_pseudo_inv</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">X</span> <span class="o">+</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+    <span class="n">eigvals</span><span class="p">,</span> <span class="n">eigvecs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eigh</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-5</span> <span class="o">*</span> <span class="n">eigvals</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">mod</span> <span class="o">=</span> <span class="n">eigvals</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="n">mod</span> <span class="o">&gt;=</span> <span class="n">tol</span>
+    <span class="n">mod</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">mod</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+    <span class="n">X_inv</span> <span class="o">=</span> <span class="p">(</span><span class="n">eigvecs</span> <span class="o">*</span> <span class="n">mod</span><span class="p">)</span> <span class="o">@</span> <span class="n">eigvecs</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="k">return</span> <span class="n">X_inv</span></div>
+
+
+
+<div class="viewcode-block" id="openvibe_ledoit_wolf">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.openvibe_ledoit_wolf">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">openvibe_ledoit_wolf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">S</span><span class="p">):</span>
+
+    <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+
+    <span class="n">nu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_features</span>
+    <span class="n">F</span> <span class="o">=</span> <span class="n">nu</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_features</span><span class="p">)</span>
+
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">X</span> <span class="o">*</span> <span class="n">X</span>
+
+    <span class="n">phiMat</span> <span class="o">=</span> <span class="p">(</span><span class="n">Y</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">Y</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_samples</span> <span class="o">-</span> <span class="n">S</span> <span class="o">*</span> <span class="n">S</span>
+
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">phiMat</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+    <span class="n">gamma</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">S</span> <span class="o">-</span> <span class="n">F</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="s2">&quot;fro&quot;</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">kappa</span> <span class="o">=</span> <span class="n">phi</span> <span class="o">/</span> <span class="n">gamma</span>
+
+    <span class="n">shrinkage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">kappa</span> <span class="o">/</span> <span class="n">n_samples</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">shrinkage</span></div>
+
+
+
+<div class="viewcode-block" id="OpenVibeLDA">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.OpenVibeLDA">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">OpenVibeLDA</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">shrinkage</span><span class="o">=</span><span class="s2">&quot;openvibe_lwf&quot;</span><span class="p">,</span>
+            <span class="n">priors</span><span class="o">=</span><span class="s2">&quot;empirical&quot;</span><span class="p">,</span>
+            <span class="n">inverse</span><span class="o">=</span><span class="s2">&quot;openvibe&quot;</span><span class="p">,</span>
+            <span class="n">force_diagonal</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shrinkage</span> <span class="o">=</span> <span class="n">shrinkage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priors</span> <span class="o">=</span> <span class="n">priors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inverse</span> <span class="o">=</span> <span class="n">inverse</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">force_diagonal</span> <span class="o">=</span> <span class="n">force_diagonal</span>
+
+        <span class="k">if</span> <span class="n">inverse</span> <span class="o">==</span> <span class="s2">&quot;openvibe&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">func_inverse</span> <span class="o">=</span> <span class="n">openvibe_pseudo_inv</span>
+        <span class="k">elif</span> <span class="n">inverse</span> <span class="o">==</span> <span class="s2">&quot;pinv&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">func_inverse</span> <span class="o">=</span> <span class="n">pinv</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;inverse should be either &#39;openvibe&#39; or &#39;pinv&#39;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_class_to_index</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">class_to_index_</span><span class="p">[</span><span class="n">c</span><span class="p">]</span>
+
+<div class="viewcode-block" id="OpenVibeLDA.fit">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.OpenVibeLDA.fit">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mu_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">),</span> <span class="n">n_features</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">w_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">),</span> <span class="n">n_features</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Nk_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priors_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">class_to_index_</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">)}</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">):</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">y</span> <span class="o">==</span> <span class="n">c</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">Nk_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">idx</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mu_</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># priors</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">priors</span> <span class="o">==</span> <span class="s2">&quot;empirical&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">priors_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Nk_</span> <span class="o">/</span> <span class="n">n_samples</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">priors</span> <span class="o">==</span> <span class="s2">&quot;equal&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">priors_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">),</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;priors should be either &#39;empirical&#39; or &#39;equal&#39;.&quot;</span><span class="p">)</span>
+
+        <span class="n">Xc</span> <span class="o">=</span> <span class="n">X</span> <span class="o">-</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">S</span> <span class="o">=</span> <span class="n">Xc</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">Xc</span> <span class="o">/</span> <span class="n">n_samples</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shrinkage</span> <span class="o">==</span> <span class="s2">&quot;openvibe_lwf&quot;</span><span class="p">:</span>
+            <span class="n">shrinkage</span> <span class="o">=</span> <span class="n">openvibe_ledoit_wolf</span><span class="p">(</span><span class="n">Xc</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shrinkage_</span> <span class="o">=</span> <span class="n">shrinkage</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">shrinkage</span> <span class="o">==</span> <span class="s2">&quot;lwf&quot;</span><span class="p">:</span>
+            <span class="n">lwf</span> <span class="o">=</span> <span class="n">LedoitWolf</span><span class="p">(</span><span class="n">assume_centered</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xc</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shrinkage_</span> <span class="o">=</span> <span class="n">lwf</span><span class="o">.</span><span class="n">shrinkage_</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shrinkage_</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shrinkage</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shrinkage_</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">shrinkage_</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;shrinkage parameter should be in [0, 1].&quot;</span><span class="p">)</span>
+
+        <span class="n">nu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">/</span> <span class="n">n_features</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="n">nu</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_features</span><span class="p">)</span>
+
+        <span class="n">S_shrunk</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">shrinkage_</span><span class="p">)</span> <span class="o">*</span> <span class="n">S</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">shrinkage_</span> <span class="o">*</span> <span class="n">T</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">force_diagonal</span><span class="p">:</span>
+            <span class="n">S_shrunk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">S_shrunk</span><span class="p">))</span>
+
+        <span class="n">S_inv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">func_inverse</span><span class="p">(</span><span class="n">S_shrunk</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">):</span>
+            <span class="n">mu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">w_</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">S_inv</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu_</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">b_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">mu</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">priors_</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="OpenVibeLDA.decision_function">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.OpenVibeLDA.decision_function">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decision_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">X</span> <span class="o">@</span> <span class="bp">self</span><span class="o">.</span><span class="n">w_</span><span class="o">.</span><span class="n">T</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">b_</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span></div>
+
+
+<div class="viewcode-block" id="OpenVibeLDA.predict_proba">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.OpenVibeLDA.predict_proba">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">n</span><span class="p">,</span> <span class="n">K</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">shape</span>
+
+        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+                <span class="n">exp_sum</span> <span class="o">=</span> <span class="mf">0.0</span>
+                <span class="n">ak</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">K</span><span class="p">):</span>
+                    <span class="n">exp_sum</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">ak</span><span class="p">)</span>
+                <span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">exp_sum</span>
+
+        <span class="k">return</span> <span class="n">p</span></div>
+
+
+<div class="viewcode-block" id="OpenVibeLDA.predict">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.OpenVibeLDA.predict">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">I</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">preds</span></div>
+</div>
+
+
+
+<span class="c1"># %%</span>
+<div class="viewcode-block" id="OpenVibeLDA_OVA">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.OpenVibeLDA_OVA">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">OpenVibeLDA_OVA</span><span class="p">(</span><span class="n">BaseEstimator</span><span class="p">,</span> <span class="n">ClassifierMixin</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">shrinkage</span><span class="o">=</span><span class="s2">&quot;openvibe_lwf&quot;</span><span class="p">,</span>
+            <span class="n">priors</span><span class="o">=</span><span class="s2">&quot;empirical&quot;</span><span class="p">,</span>
+            <span class="n">inverse</span><span class="o">=</span><span class="s2">&quot;openvibe&quot;</span><span class="p">,</span>
+            <span class="n">force_diagonal</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">shrinkage</span> <span class="o">=</span> <span class="n">shrinkage</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">priors</span> <span class="o">=</span> <span class="n">priors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inverse</span> <span class="o">=</span> <span class="n">inverse</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">force_diagonal</span> <span class="o">=</span> <span class="n">force_diagonal</span>
+
+<div class="viewcode-block" id="OpenVibeLDA_OVA.fit">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.OpenVibeLDA_OVA.fit">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">classes_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">class_to_index_</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">)}</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">):</span>
+            <span class="n">y_bin</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">!=</span> <span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+            <span class="n">model</span> <span class="o">=</span> <span class="n">OpenVibeLDA</span><span class="p">(</span>
+                <span class="n">shrinkage</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">shrinkage</span><span class="p">,</span>
+                <span class="n">priors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">priors</span><span class="p">,</span>
+                <span class="n">inverse</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inverse</span><span class="p">,</span>
+                <span class="n">force_diagonal</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">force_diagonal</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y_bin</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+
+<div class="viewcode-block" id="OpenVibeLDA_OVA.predict">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.OpenVibeLDA_OVA.predict">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;classes_&quot;</span><span class="p">,</span> <span class="s2">&quot;model_dict_&quot;</span><span class="p">])</span>
+        <span class="n">preds_sub</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">):</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">preds_sub</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+
+        <span class="n">preds_sub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">preds_sub</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+
+        <span class="n">preds</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">pred_sub</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">preds_sub</span><span class="p">):</span>
+
+            <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">pred_sub</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="n">I</span><span class="o">.</span><span class="n">size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># there&#39;s only one candidate</span>
+                <span class="n">preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+            <span class="k">elif</span> <span class="n">I</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># there&#39;s multiple candidate</span>
+                <span class="n">probas</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">I</span><span class="p">:</span>
+                    <span class="n">proba</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">idx</span> <span class="p">:</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:])[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">_class_to_index</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="n">probas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">proba</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+                <span class="n">probas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">probas</span><span class="p">)</span>
+                <span class="n">preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">I</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">probas</span><span class="p">)]])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># no candidate</span>
+                <span class="n">probas</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">):</span>
+                    <span class="n">proba</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">idx</span> <span class="p">:</span> <span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">:])[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">m</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">_class_to_index</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                    <span class="n">probas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">proba</span><span class="p">[</span><span class="n">m</span><span class="p">])</span>
+                <span class="n">probas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">probas</span><span class="p">)</span>
+                <span class="n">preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">probas</span><span class="p">)])</span>
+
+        <span class="n">preds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">preds</span></div>
+
+
+<div class="viewcode-block" id="OpenVibeLDA_OVA.predict_proba">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.OpenVibeLDA_OVA.predict_proba">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict_proba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;classes_&quot;</span><span class="p">,</span> <span class="s2">&quot;model_dict_&quot;</span><span class="p">])</span>
+        <span class="n">probas</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">classes_</span><span class="p">):</span>
+            <span class="n">proba</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+            <span class="n">probas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">proba</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">_class_to_index</span><span class="p">(</span><span class="mi">0</span><span class="p">)])</span>
+        <span class="n">probas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">probas</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">probas</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">probas</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">probas</span></div>
+
+
+<div class="viewcode-block" id="OpenVibeLDA_OVA.decision_function">
+<a class="viewcode-back" href="../../pyclf.html#pyclf.lda.OpenVibeLDA_OVA.decision_function">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">decision_function</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+        <span class="n">check_is_fitted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;classes_&quot;</span><span class="p">,</span> <span class="s2">&quot;model_dict_&quot;</span><span class="p">])</span>
+        <span class="n">preds</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+        <span class="n">distances</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">pred</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">preds</span><span class="p">):</span>
+            <span class="n">sample</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_dict_</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">class_to_index_</span><span class="p">[</span><span class="n">pred</span><span class="p">]]</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span>
+                <span class="n">sample</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:]</span>
+            <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+
+        <span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">distances</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Simon Kojima.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.0.4.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

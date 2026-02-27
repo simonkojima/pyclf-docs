@@ -1,0 +1,21 @@
+pyclf package
+=============
+
+Submodules
+----------
+
+pyclf.lda module
+----------------
+
+.. automodule:: pyclf.lda
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: pyclf
+   :members:
+   :show-inheritance:
+   :undoc-members:
