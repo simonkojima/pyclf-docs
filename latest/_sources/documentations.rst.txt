@@ -1,0 +1,9 @@
+Documentation
+=============
+
+rosoku
+------
+.. autosummary::
+   :toctree:
+   :caption: rosoku modules
+   :recursive:
