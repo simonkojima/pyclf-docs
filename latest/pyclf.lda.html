@@ -2,12 +2,13 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Overview: module code &#8212; pyclf 0.0.6 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>pyclf.lda &#8212; pyclf 0.0.6 documentation</title>
   
   
   
@@ -26,25 +27,25 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=d2d258e8" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css?v=f4aeca0c" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css?v=2082cf3c" />
-    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css?v=d2d258e8" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css?v=1277b6f3" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
-    <script src="../_static/documentation_options.js?v=1fd71caa"></script>
-    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/index';</script>
+    <script src="_static/documentation_options.js?v=1fd71caa"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pyclf.lda';</script>
     <script>
         DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
         DOCUMENTATION_OPTIONS.theme_switcher_json_url = 'https://simonkojima.github.io/pyclf-docs/versions.json';
@@ -52,8 +53,8 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -75,7 +76,7 @@
   <dialog id="pst-search-dialog">
     
 <form class="bd-search d-flex align-items-center"
-      action="../search.html"
+      action="search.html"
       method="get">
   <i class="fa-solid fa-magnifying-glass"></i>
   <input type="search"
@@ -111,7 +112,7 @@
     
   
 
-<a class="navbar-brand logo" href="../index.html">
+<a class="navbar-brand logo" href="index.html">
   
   
   
@@ -122,8 +123,8 @@
       
     
     
-    <img src="../_static/logo-light.png" class="logo__image only-light" alt="pyclf 0.0.6 documentation - Home"/>
-    <img src="../_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="pyclf 0.0.6 documentation - Home"/>
+    <img src="_static/logo-light.png" class="logo__image only-light" alt="pyclf 0.0.6 documentation - Home"/>
+    <img src="_static/logo-dark.png" class="logo__image only-dark pst-js-only" alt="pyclf 0.0.6 documentation - Home"/>
   
   
 </a></div>
@@ -139,21 +140,14 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../documentations.html">
-    Documentation
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+  <a class="nav-link nav-internal" href="auto_examples/index.html">
     Examples
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../install.html">
+  <a class="nav-link nav-internal" href="install.html">
     How to Install
   </a>
 </li>
@@ -221,6 +215,10 @@
   
 
   
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
 </div>
 
     </header>
@@ -231,10 +229,8 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -250,21 +246,14 @@
   <ul class="bd-navbar-elements navbar-nav">
     
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../documentations.html">
-    Documentation
-  </a>
-</li>
-
-
-<li class="nav-item ">
-  <a class="nav-link nav-internal" href="../auto_examples/index.html">
+  <a class="nav-link nav-internal" href="auto_examples/index.html">
     Examples
   </a>
 </li>
 
 
 <li class="nav-item ">
-  <a class="nav-link nav-internal" href="../install.html">
+  <a class="nav-link nav-internal" href="install.html">
     How to Install
   </a>
 </li>
@@ -311,6 +300,15 @@
     
   </div>
   
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"></div>
+</nav></div>
+    </div>
+  
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
       <div class="sidebar-primary-item">
@@ -342,11 +340,11 @@
   <ul class="bd-breadcrumbs">
     
     <li class="breadcrumb-item breadcrumb-home">
-      <a href="../index.html" class="nav-link" aria-label="Home">
+      <a href="index.html" class="nav-link" aria-label="Home">
         <i class="fa-solid fa-home"></i>
       </a>
     </li>
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Overview: module code</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pyclf.lda</span></li>
   </ul>
 </nav>
 </div>
@@ -363,9 +361,43 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <h1>All modules for which code is available</h1>
-<ul><li><a href="pyclf/lda.html">pyclf.lda</a></li>
-</ul>
+  <section id="module-pyclf.lda">
+<span id="pyclf-lda"></span><h1>pyclf.lda<a class="headerlink" href="#module-pyclf.lda" title="Link to this heading">#</a></h1>
+<p class="rubric">Functions</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyclf.html#pyclf.lda.openvibe_ledoit_wolf" title="pyclf.lda.openvibe_ledoit_wolf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openvibe_ledoit_wolf</span></code></a>(X, S)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyclf.html#pyclf.lda.openvibe_pseudo_inv" title="pyclf.lda.openvibe_pseudo_inv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openvibe_pseudo_inv</span></code></a>(X)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyclf.html#pyclf.lda.subtract_classwise_mean" title="pyclf.lda.subtract_classwise_mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subtract_classwise_mean</span></code></a>(X, y)</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="rubric">Classes</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyclf.html#pyclf.lda.OpenVibeLDA" title="pyclf.lda.OpenVibeLDA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OpenVibeLDA</span></code></a>([shrinkage, priors, inverse, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyclf.html#pyclf.lda.OpenVibeLDA_OVA" title="pyclf.lda.OpenVibeLDA_OVA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OpenVibeLDA_OVA</span></code></a>([shrinkage, priors, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="pyclf.html#pyclf.lda.ShrinkageLDA" title="pyclf.lda.ShrinkageLDA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShrinkageLDA</span></code></a>([gamma, priors, scaling, inverse])</p></td>
+<td><p>Binary Linear Discriminant Analysis (LDA) with shrinkage covariance estimation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="pyclf.html#pyclf.lda.ShrinkageLDA_OVA" title="pyclf.lda.ShrinkageLDA_OVA"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ShrinkageLDA_OVA</span></code></a>([gamma, priors, scaling, ...])</p></td>
+<td><p>One-vs-All (OvA) extension of Shrinkage Linear Discriminant Analysis (LDA).</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+
 
                 </article>
               
@@ -383,6 +415,21 @@
             
             
               
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pyclf.lda.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -394,8 +441,8 @@
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">

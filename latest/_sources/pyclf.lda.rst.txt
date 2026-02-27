@@ -1,0 +1,23 @@
+﻿pyclf.lda
+=========
+
+.. automodule:: pyclf.lda
+
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      openvibe_ledoit_wolf
+      openvibe_pseudo_inv
+      subtract_classwise_mean
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      OpenVibeLDA
+      OpenVibeLDA_OVA
+      ShrinkageLDA
+      ShrinkageLDA_OVA
+   

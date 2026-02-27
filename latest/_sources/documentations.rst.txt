@@ -1,9 +1,18 @@
 Documentation
 =============
 
-rosoku
-------
+pyclf
+-----
 .. autosummary::
    :toctree:
-   :caption: rosoku modules
+   :caption: pyclf modules
    :recursive:
+   
+pyclf.lda
+---------
+.. autosummary::
+   :toctree:
+   :caption: pyclf.lda
+   :recursive:
+
+   pyclf.lda.ShrinkageLDA

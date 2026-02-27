@@ -1,0 +1,31 @@
+﻿pyclf.lda.ShrinkageLDA
+======================
+
+.. currentmodule:: pyclf.lda
+
+.. autoclass:: ShrinkageLDA
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~ShrinkageLDA.__init__
+      ~ShrinkageLDA.decision_function
+      ~ShrinkageLDA.fit
+      ~ShrinkageLDA.get_metadata_routing
+      ~ShrinkageLDA.get_params
+      ~ShrinkageLDA.predict
+      ~ShrinkageLDA.predict_proba
+      ~ShrinkageLDA.score
+      ~ShrinkageLDA.set_params
+      ~ShrinkageLDA.set_score_request
+   
+   
+
+   
+   
+   
