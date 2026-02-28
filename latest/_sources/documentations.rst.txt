@@ -15,4 +15,5 @@ pyclf.lda
    :caption: pyclf.lda
    :recursive:
 
-   pyclf.lda.ShrinkageLDA
+   pyclf.discriminant_analysis.BinaryLinearDiscriminantAnalysis
+   pyclf.discriminant_analysis.LinearDiscriminantAnalysis

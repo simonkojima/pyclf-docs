@@ -11,5 +11,6 @@ pyclf documentation
    :caption: Contents:
 
    documentations
+   equations
    auto_examples/index
    install

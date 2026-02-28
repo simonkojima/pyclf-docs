@@ -1,0 +1,160 @@
+pyclf.discriminant_analysis.LinearDiscriminantAnalysis
+======================================================
+
+Overview
+--------
+This page describes the mathematical formulation implemented in
+:class:`pyclf.discriminant_analysis.LinearDiscriminantAnalysis`.
+
+The classifier follows the classical generative Linear Discriminant Analysis
+(LDA) model with a shared covariance matrix and optional shrinkage
+regularization.
+
+Given input samples :math:`x \in \mathbb{R}^d` and class labels
+:math:`y \in \{1,\dots,K\}`, each class is modeled by a Gaussian distribution
+with class-specific mean :math:`\mu_k` and a common covariance matrix
+:math:`\Sigma`.
+
+.. math::
+   p(x \mid y=k) = \mathcal{N}(x \mid \mu_k, \Sigma)
+
+The posterior class probabilities are obtained using Bayes' rule and expressed
+via linear discriminant functions.
+
+Class Means
+-----------
+For each class :math:`k`, the mean vector is estimated as
+
+.. math::
+   \mu_k = \frac{1}{N_k} \sum_{i:y_i=k} x_i,
+
+where :math:`N_k` is the number of samples belonging to class :math:`k`.
+
+Class Priors
+------------
+The class prior probabilities are either empirical or uniform:
+
+Empirical priors:
+
+.. math::
+   \pi_k = \frac{N_k}{N},
+
+Equal priors:
+
+.. math::
+   \pi_k = \frac{1}{K}.
+
+Here :math:`N` is the total number of samples and :math:`K` the number of classes.
+
+Shared Covariance Matrix
+------------------------
+Two covariance estimation strategies are available.
+
+Within-class covariance (class-centered):
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Each sample is centered using its class mean:
+
+.. math::
+   \tilde{x}_i = x_i - \mu_{y_i}.
+
+The pooled covariance matrix is then
+
+.. math::
+   S = \frac{1}{N} \sum_{i=1}^{N} \tilde{x}_i \tilde{x}_i^\top.
+
+Global covariance (globally centered):
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Alternatively, samples are centered using the global mean
+
+.. math::
+   \bar{x} = \frac{1}{N} \sum_{i=1}^{N} x_i,
+   \qquad
+   \tilde{x}_i = x_i - \bar{x},
+
+yielding
+
+.. math::
+   S = \frac{1}{N} \sum_{i=1}^{N} \tilde{x}_i \tilde{x}_i^\top.
+
+Shrinkage Regularization
+------------------------
+To improve numerical stability, the covariance matrix can be regularized
+using Ledoit–Wolf shrinkage. The regularized covariance is
+
+.. math::
+   \Sigma = (1 - \gamma) S + \gamma T,
+
+where :math:`\gamma \in [0,1]` is the shrinkage coefficient and
+
+.. math::
+   T = \nu I,
+   \qquad
+   \nu = \frac{\mathrm{tr}(S)}{d}.
+
+Here :math:`I` is the identity matrix and :math:`d` the feature dimension.
+
+Inverse Covariance
+------------------
+The inverse covariance :math:`\Sigma^{-1}` is computed using one of the
+following methods:
+
+- Standard matrix inverse
+- Moore–Penrose pseudo-inverse
+- Eigenvalue-thresholded pseudo-inverse (OpenViBE-style)
+
+This yields a stable estimate even in rank-deficient settings.
+
+Linear Discriminant Functions
+-----------------------------
+For each class :math:`k`, the linear discriminant function is defined as
+
+.. math::
+   g_k(x) = w_k^\top x + b_k,
+
+where
+
+.. math::
+   w_k = \Sigma^{-1} \mu_k,
+
+and
+
+.. math::
+   b_k = -\frac{1}{2} \mu_k^\top \Sigma^{-1} \mu_k + \log \pi_k.
+
+These parameters correspond exactly to the implementation:
+
+.. code-block:: python
+
+   self.w_[k] = S_inv @ mu_k
+   self.b_[k] = (-0.5 * mu_k.T @ self.w_[k]) + log(prior_k)
+
+Class Probabilities
+-------------------
+The discriminant scores are transformed into posterior class probabilities
+using the softmax function:
+
+.. math::
+   p(y=k \mid x)
+   = \frac{\exp(g_k(x))}
+          {\sum_{j=1}^{K} \exp(g_j(x))}.
+
+This ensures that probabilities are normalized and numerically stable.
+
+Prediction Rule
+---------------
+The predicted class label is obtained by selecting the class with the
+largest discriminant score:
+
+.. math::
+   \hat{y} = \arg\max_k g_k(x).
+
+Remarks
+-------
+- The model assumes homoscedastic Gaussian class distributions.
+- Shrinkage regularization is particularly important for EEG/BCI
+  applications where :math:`d \gg N`.
+- The ``covariance="within"`` option corresponds to the classical
+  pooled within-class covariance used in standard LDA.
+- The ``covariance="global"`` option uses a globally centered covariance,
+  which can be useful for alternative modeling assumptions or to mimic
+  specific BCI toolchain implementations.

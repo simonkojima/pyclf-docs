@@ -1,0 +1,31 @@
+﻿pyclf.discriminant\_analysis.BinaryLinearDiscriminantAnalysis
+=============================================================
+
+.. currentmodule:: pyclf.discriminant_analysis
+
+.. autoclass:: BinaryLinearDiscriminantAnalysis
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~BinaryLinearDiscriminantAnalysis.__init__
+      ~BinaryLinearDiscriminantAnalysis.decision_function
+      ~BinaryLinearDiscriminantAnalysis.fit
+      ~BinaryLinearDiscriminantAnalysis.get_metadata_routing
+      ~BinaryLinearDiscriminantAnalysis.get_params
+      ~BinaryLinearDiscriminantAnalysis.predict
+      ~BinaryLinearDiscriminantAnalysis.predict_log_proba
+      ~BinaryLinearDiscriminantAnalysis.predict_proba
+      ~BinaryLinearDiscriminantAnalysis.score
+      ~BinaryLinearDiscriminantAnalysis.set_params
+   
+   
+
+   
+   
+   

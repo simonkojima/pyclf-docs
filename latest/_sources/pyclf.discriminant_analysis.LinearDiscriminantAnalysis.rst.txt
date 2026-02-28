@@ -1,0 +1,31 @@
+﻿pyclf.discriminant\_analysis.LinearDiscriminantAnalysis
+=======================================================
+
+.. currentmodule:: pyclf.discriminant_analysis
+
+.. autoclass:: LinearDiscriminantAnalysis
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~LinearDiscriminantAnalysis.__init__
+      ~LinearDiscriminantAnalysis.decision_function
+      ~LinearDiscriminantAnalysis.fit
+      ~LinearDiscriminantAnalysis.get_metadata_routing
+      ~LinearDiscriminantAnalysis.get_params
+      ~LinearDiscriminantAnalysis.predict
+      ~LinearDiscriminantAnalysis.predict_log_proba
+      ~LinearDiscriminantAnalysis.predict_proba
+      ~LinearDiscriminantAnalysis.score
+      ~LinearDiscriminantAnalysis.set_params
+   
+   
+
+   
+   
+   
